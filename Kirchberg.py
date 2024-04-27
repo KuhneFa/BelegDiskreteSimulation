@@ -301,15 +301,15 @@ for i in range(monte_carlo):
     anzahl_fachkraft_sommer_array.append(anzahl_fachkraft_sommer)
 
 # Ausgabe der angepassten Preise
-print("Ertrag November: ", (np.sum(ertrag_november_array)/monte_carlo), "€")
-print("Ertrag Dezember: ", (np.sum(ertrag_dezember_array)/monte_carlo), "€")
-print("Ertrag Januar: ", (np.sum(ertrag_januar_array)/monte_carlo), "€")
-print("Ertrag Februar: ", (np.sum(ertrag_februar_array)/monte_carlo), "€")
-print("Ertrag März: ", (np.sum(ertrag_maerz_array)/monte_carlo), "€")
-print("Ertrag April: ", (np.sum(ertrag_april_array)/monte_carlo), "€")
+print("Einnahmen November: ", (np.sum(ertrag_november_array)/monte_carlo), "€")
+print("Einnahmen Dezember: ", (np.sum(ertrag_dezember_array)/monte_carlo), "€")
+print("Einnahmen Januar: ", (np.sum(ertrag_januar_array)/monte_carlo), "€")
+print("Einnahmen Februar: ", (np.sum(ertrag_februar_array)/monte_carlo), "€")
+print("Einnahmen März: ", (np.sum(ertrag_maerz_array)/monte_carlo), "€")
+print("Einnahmen April: ", (np.sum(ertrag_april_array)/monte_carlo), "€")
 
-print("Budget Personal Winter: ", (np.sum(budget_personal_winter_array)/monte_carlo), "€")
-print("Budget Personal Sommer: ", (np.sum(budget_personal_sommer_array)/monte_carlo), "€")
+print("Einnahmen Winter gesamt: ", (np.sum(ertrag_winter_array)/monte_carlo), "€")
+print("Einnahmen Sommer gesamt: ", (np.sum(ertrag_sommer_array)/monte_carlo), "€")
 
 print("Die empfohlene Anzahl Fachkräfte für den Winter: ", (round(np.sum(anzahl_fachkraft_winter_array)/monte_carlo,0)))
 print("Die empfohlene Anzahl Fachkräfte für den Sommer: ", (round(np.sum(anzahl_fachkraft_sommer_array)/monte_carlo,0)))
