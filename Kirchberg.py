@@ -20,7 +20,7 @@ try:
 except ValueError:
     print("Bitte einen ganzzahligen Integer eingeben")
 
-# Quelle Nomenklatur Tirol für Fachkraft mit 4-6 Jahren Berufserfahrung
+# Quelle 4 - Nomenklatur Tirol für Fachkraft mit 4-6 Jahren Berufserfahrung
 # Verdopplung des Bruttogehaltes, um die gesamten verursachten Kosten zu berechnen
 preis_fachkraft = (1953.90 * 2)
 
@@ -68,13 +68,13 @@ def temperature_price_room_influence(simulation):
 '''-----------------------------------------Datenhaltung von Auslastung, Wetter und Nachfrage-------------------------------------------------------'''
 
 # Auslastungsraten für Hotels in Österreich von 2012 - 2019
-# Quelle 1 siehe Dokumentationtatista
+# Quelle 2 siehe Dokumentationtatista
 auslastungsrate_winter = [0.4040,0.3990,0.4040,0.4140,0.4140,0.4290,0.4340]
 auslastungsrate_sommer = [0.41, 0.4150,0.4270,0.4440,0.4480,0.4510,0.4620]
 
 # Tirol Nächtigungen pro Saison
 # Von 2000 - 2023 ausgenommen[2020,2021] aufgrund von Covid
-# Quelle 2 siehe Dokumentation
+# Quelle 1 siehe Dokumentation
 sommer_demand = [22788556,22443288,22161313,21798908,21188147, 20767759, 19669564, 18953625, 18715631, 18325187, 18068597, 17784386, 17547539, 17806549, 17447438, 16895521, 17292843, 17382307, 17792473, 17656247, 17006337, 17404601]    
 winter_demand= [25707235,20912701,27486459,27580594, 26464201, 26800488, 25960346, 25368026, 26189170, 25699115, 24830645, 25241464, 25584483, 25612058, 24062117, 24766815, 25047404, 24648277, 24345343, 23870576, 23503160, 22400614]
 
@@ -162,6 +162,7 @@ std_dezember = (abs(dezember_temp_avg - dezember_temp_min) + abs(dezember_temp_m
 
 
 '''-----------------------------------------Simulation von Auslastung, Wetter und Nachfrage---------------------------------------------------'''
+# Anlegen von Arrays, um die Werte für die einzelnen Durchläufe der Simulation zu speichern
 betten_belegt_winter_array = []
 betten_belegt_sommer_array = []
 preis_winter_array = []
@@ -299,6 +300,8 @@ for i in range(monte_carlo):
     anzahl_fachkraft_winter_array.append(anzahl_fachkraft_winter)
     anzahl_fachkraft_sommer = int(round(((budget_personal_sommer / 6)/preis_fachkraft),0))
     anzahl_fachkraft_sommer_array.append(anzahl_fachkraft_sommer)
+
+'''-----------------------------------------Ermitteln der Ausgabewerte-------------------------------------------------------'''
 
 # Ausgabe der angepassten Preise
 print("Einnahmen November: ", (np.sum(ertrag_november_array)/monte_carlo), "€")
