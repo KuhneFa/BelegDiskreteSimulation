@@ -21,9 +21,9 @@ Um die Gesamtnachfrage nach Übernachtungen in Tirol einschätzen zu können, ha
 
 Die Auslastung des Hotels habe ich basierend auf historischen Daten für die Hotelauslastung in Österreich simuliert (2). Dabei habe ich die Jahre 2012-2019 als Datengrundlage genommen.
 
-Für die Temperatur habe ich ebenfalls auf historische Durchschnittswerte für Kirchberg, Tirol zurückgegriffen (3). Im Gegensatz zu den anderen Werten teilen sich diese auf Monate auf und nicht auf die Saison. Daher habe ich für die Wintersaison die Monate von November bis April gesondert betrachtet. Sicherlich hätte man hier um dem Klimawandel gerecht zu werden eine gewisse dynamik in die Werte einbauen können.
+Für die Temperatur habe ich ebenfalls auf historische Durchschnittswerte für Kirchberg, Tirol zurückgegriffen (3). Im Gegensatz zu den anderen Werten teilen sich diese auf Monate auf und nicht auf die Saison. Daher habe ich für die Wintersaison die Monate von November bis April gesondert betrachtet. Sicherlich hätte man hier um dem Klimawandel gerecht zu werden eine gewisse Dynamik in die Werte einbauen können.
 
-Für alle Simulationsobjekte habe ich mich für normalverteilte Werte entschieden, da diese für mich realistischer erscheinen bei den genannten Beispielen als etwa gleichverteilte Werte.
+Für alle Simulationsobjekte habe ich mich für normalverteilte Werte entschieden, da diese für mich realistischer erscheinen bei den genannten Beispielen als etwa gleichverteilte Zufallsverteilungen.
 
 Kosten für das Personal sind Lohngruppe 3 mit 4-6 Jahren Berufserfahrung der Nomenklatur Tirol (4).
 
