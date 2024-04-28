@@ -6,9 +6,12 @@ Das Hotel Goldener Adler in Kirchberg, Tirol möchte kalkulieren wie viele Mitar
 
 Der Preis unterliegt jedoch kurzfristigen Schwankungen. Um Wettbewerbsfähig zu sein muss der Wirt den Preis senken, wenn die Gesamtnachfrage für Übernachtungen in Tirol sinkt oder das Wetter im Winter nicht mehr zum Skifahren geeignet ist. Andererseits kann er die Preise erhöhen, wenn die Gesamtnachfrage nach Übernachtungen in Tirol stark ansteigt. Diese kurzfristigen Änderungen können im Winter monatsweise auftreten.
 
-Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simulieren: 
+Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simulieren:
+
         - Die Gesamtnachfrage
+
         - Die Auslastung seines Hotels
+        
         - Die Temperatur im Winter, um einschätzen zu können, ob Skifahren möglich ist
 
 Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Saison, wenn die Personalkosten maximal 30% der Einnahmen betragen dürfen.
