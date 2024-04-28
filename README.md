@@ -45,14 +45,15 @@ Der Code unterteilt sich in vier Bereiche:
 **3.** Die Vorbereitung der Simulation. Hier werden Standardabweichung und Mittelwert ermittelt, um anschließend mit numpy die Simulationen durchführen zu können.
 
 **4.** Die Simulation. Hier wurden die Werte in eine for-Schleife eingesetzt. Dadurch kann die Anzahl der Versuche für die Montecarlo Simulationen durchlaufen werden. Folgende Schritte folgen:
+
     - Simulation der Auslastungsrate. Daraus wird die Anzahl der belegten Zimmer berechnet
-    - Simulation der Gesamtnachfrage nach Übernachtungen in Tirol: Der Preis steigt, wenn die Nachfrage über dem Durchschnitt für die Saison liegt. Der Preis sinkt, wenn die Nachfrage unter dem Durchschnitt für die Saison liegt.
-    - Simulation der Temperatur für die einzelnen Monate in Kirchberg: Hier werden die Temperaturen der Monate für die Wintersaison ausgewertet. Wenn es an einem Tag im Winter 0 Grad oder wärmer ist, muss künstlich beschneit werden. Die Erfahrung des Skifahrens leidet und der Preis sinkt leicht. Wenn es wärmer als 3 Grad ist, kann kaum noch künstlich beschneit werden. Es kann kaum noch Skigefahren werden. Die Preise sinken noch weiter
+    - Simulation der Gesamtnachfrage nach Übernachtungen in Tirol: Der Preis steigt schrittweise, wenn die Nachfrage über dem Durchschnitt für die Saison liegt. Der Preis sinkt schrittweise, wenn die Nachfrage unter dem Durchschnitt für die Saison liegt.
+    - Simulation der Temperatur für die einzelnen Monate in Kirchberg: Hier werden die Temperaturen der Monate für die Wintersaison ausgewertet. Wenn es an einem Tag im Winter 0 Grad oder wärmer ist, muss künstlich beschneit werden. Die Erfahrung des Skifahrens leidet und der Preis sinkt leicht. Wenn es wärmer als 3 Grad ist, kann kaum noch künstlich beschneit werden. Es kann kaum noch Skigefahren werden. Die Preise sinken noch weiter.
 
 **5.** Aus den Preisen werden die Einnahmen für die Monate der Wintersaison berechnet und für die Sommersaison. Abgeleitet aus dem Ertrag werden dann die in der Aufgabenstellung geforderten 30% für Personalkosten berechnet. Dieses Budget wird anschließen durch die Kosten für eine Fachkraft pro Saison geteilt. Dadurch kann genau bestimmt werden wie viele Fachkräfte der Wirt für eine Saison einstellen kann.
 
 ## Resume:
-Das Program ist so konzipiert, dass es dem Nutzer erlaubt die Basisparameter selbst zu wählen.
+Das Program ist so konzipiert, dass es dem Nutzer erlaubt die Basisparameter via Terminal selbst einzugeben.
 Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Werte geliefert:
 
     Input:
@@ -65,14 +66,14 @@ Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Wer
             | Parameter                      | Wert           | 
             |:-------------------------------|:-------------: |
             | Einnahmen November             | 862,840.95 €   |
-            | Einnahmen Dezember             | 952,940.155 €  |
+            | Einnahmen Dezember             | 952,940.15 €   |
             | Einnahmen Januar               | 959,154.26 €   |
             | Einnahmen Februar              | 859,217.24 €   |
-            | Einnahmen März                 | 896,206.745 €  |
-            | Einnahmen April                | 818,607.6 €    |
+            | Einnahmen März                 | 896,206.74 €   |
+            | Einnahmen April                | 818,607.60 €   |
             |:-------------------------------|:--------------:|
-            | Einnahmen Wintersaison gesamt  | 534,896,6.95 € |
-            | Einnahmen Sommersaison gesamt  |  314,477,2.8 € |
+            | Einnahmen Wintersaison gesamt  | 5,348,966.95 € |
+            | Einnahmen Sommersaison gesamt  | 3,144,772.80 € |
             |:-------------------------------|:--------------:|
             | Anzahl Fachkräfte für Winter   |              68|
             | Anzahl Fachkräfte für Sommer   |              40|
@@ -85,6 +86,7 @@ Im Terminal den folgenden Code ausführen:
 
     python Kirchberg.py 
 
+Anschließend beginnt die Aufforderung zur Eingabe konkreter Werte.
 ## Quellen:
 
 
