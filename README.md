@@ -12,7 +12,7 @@ Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simu
 
         - Die Auslastung seines Hotels
         
-        - Die Temperatur im Winter, um einschätzen zu können, ob Skifahren möglich ist
+        - Die Temperatur im Winter, um einschätzen zu können ob Skifahren möglich ist
 
 Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Saison, wenn die Personalkosten maximal 30% der Einnahmen betragen dürfen.
 
