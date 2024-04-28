@@ -4,7 +4,7 @@ Dieses Projekt bildet den Beleg für den Kurs "Diskrete Simulation" im Sommersem
 ## Aufgabenstellung:
 Das Hotel Goldener Adler in Kirchberg, Tirol möchte kalkulieren wie viele Mitarbeiter es sich leisten kann einzustellen jeweils für Sommer- und Wintersaison. Das Hotel hat 500 Zimmer, die schwankend nach Saison, Wetter und Gesamtnachfrage der Übernachtungen ausgelastet sind. Der Preis für eine Übernachtung wird vom Wirt selbst festgelegt und liegt, basierend auf Erfahrungswerten, zwischen 80-150€. 
 
-Der Preis unterliegt jedoch kurzfristigen Schwankungen. Um Wettbewerbsfähig zu sein muss der Wirt den Preis senken, wenn die Gesamtnachfrage für Übernachtungen in Tirol sinkt oder das Wetter im Winter nicht mehr zum Skifahren geeignet ist. Andererseits kann er die Preise erhöhen, wenn die Gesamtnachfrage nach Übernachtungen in Tirol stark ansteigt.
+Der Preis unterliegt jedoch kurzfristigen Schwankungen. Um Wettbewerbsfähig zu sein muss der Wirt den Preis senken, wenn die Gesamtnachfrage für Übernachtungen in Tirol sinkt oder das Wetter im Winter nicht mehr zum Skifahren geeignet ist. Andererseits kann er die Preise erhöhen, wenn die Gesamtnachfrage nach Übernachtungen in Tirol stark ansteigt. Diese kurzfristigen Änderungen können im Winter monatsweise auftreten.
 
 Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simulieren: 
         - Die Gesamtnachfrage
