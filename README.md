@@ -10,11 +10,11 @@ Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simu
 
         - Die Gesamtnachfrage
 
-        - Die Auslastung seines Hotels
+        - Die Auslastung der Zimmer seines Hotels
         
         - Die Temperatur im Winter, um einschätzen zu können ob Skifahren möglich ist
 
-Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Saison, wenn die Personalkosten maximal 30% der Einnahmen betragen dürfen.
+Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Sommer- und Wintersaison, wenn die Personalkosten maximal 30% der Einnahmen betragen dürfen.
 
 ## Überlegungen:
 Um die Gesamtnachfrage nach Übernachtungen in Tirol einschätzen zu können, habe ich auf historische Daten zurückgegriffen (1). Dabei habe ich die Nächtigungen von 2000-2023 betrachtet und basierend auf diesen Werten eine normalverteilte Simulation durchgeführt. Die Jahre 2020,2021 habe ich aufgrund des Sondereinflusses von Covid weggelassen, wobei man durchaus argumentieren kann diese Werte ebenfalls mit zu berücksichtigen.
