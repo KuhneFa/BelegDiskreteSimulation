@@ -38,7 +38,7 @@ Der Code unterteilt sich in vier Bereiche:
     
     - Anzahl der Durchläufe für die Montecarlo-Simulation: 1000
 
-*Die Zahlenwerte sind hier als Beispielwerte für die spätere Tabelle zu verstehen.
+*Die Zahlenwerte sind hier als Beispielwerte für die spätere Tabelle zu verstehen.*
 
 **2.** Die Datenhaltung. Hier sind alle historischen Daten zu den Simulationsobjekten abgelegt
 
