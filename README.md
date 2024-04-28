@@ -29,10 +29,16 @@ Kosten für das Personal sind Lohngruppe 3 mit 4-6 Jahren Berufserfahrung der No
 
 Der Code unterteilt sich in vier Bereiche:
 **1.** Das setzen der wichtigsten Parameter erfolgt durch den User. Folgende Parameter können gesetzt werden:
+
     - Preis für eine Übernachtung im Winter: 150€
+
     - Preis für eine Übernachtung im Sommer: 80€
+    
     - Anzahl der Zimmer, die zu vermieten sind: 500
+    
     - Anzahl der Durchläufe für die Montecarlo-Simulation: 1000
+
+Die Zahlenwerte sind hier als Beispielwerte für die spätere Tabelle zu verstehen.
 
 **2.** Die Datenhaltung. Hier sind alle historischen Daten zu den Simulationsobjekten abgelegt
 
