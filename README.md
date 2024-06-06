@@ -55,15 +55,15 @@ Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Wer
     Output:
             | Parameter                      | Wert           | 
             |:-------------------------------|:-------------: |
-            | Einnahmen November             | 862,840.95 €   |
-            | Einnahmen Dezember             | 952,940.155 €  |
-            | Einnahmen Januar               | 959,154.26 €   |
-            | Einnahmen Februar              | 859,217.24 €   |
-            | Einnahmen März                 | 896,206.745 €  |
-            | Einnahmen April                | 818,607.6 €    |
+            | Umsatz November                | 862,840.95 €   |
+            | Umsatz Dezember                | 952,940.155 €  |
+            | Umsatz Januar                  | 959,154.26 €   |
+            | Umsatz Februar                 | 859,217.24 €   |
+            | Umsatz März                    | 896,206.745 €  |
+            | Umsatz April                   | 818,607.6 €    |
             |:-------------------------------|:--------------:|
-            | Einnahmen Wintersaison gesamt  | 534,896,6.95 € |
-            | Einnahmen Sommersaison gesamt  |  314,477,2.8 € |
+            | Umsatz Wintersaison gesamt     | 534,896,6.95 € |
+            | Umsatz Sommersaison gesamt     |  314,477,2.8 € |
             |:-------------------------------|:--------------:|
             | Anzahl Fachkräfte für Winter   |              68|
             | Anzahl Fachkräfte für Sommer   |              40|

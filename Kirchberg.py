@@ -167,14 +167,14 @@ betten_belegt_winter_array = []
 betten_belegt_sommer_array = []
 preis_winter_array = []
 preis_sommer_array = []
-ertrag_november_array = []
-ertrag_dezember_array = []
-ertrag_januar_array = []
-ertrag_februar_array = []
-ertrag_maerz_array = []
-ertrag_april_array = []
-ertrag_winter_array = []
-ertrag_sommer_array = []
+umsatz_november_array = []
+umsatz_dezember_array = []
+umsatz_januar_array = []
+umsatz_februar_array = []
+umsatz_maerz_array = []
+umsatz_april_array = []
+umsatz_winter_array = []
+umsatz_sommer_array = []
 budget_personal_sommer_array = []
 budget_personal_winter_array = []
 anzahl_fachkraft_winter_array = []
@@ -269,30 +269,30 @@ for i in range(monte_carlo):
     preis_delta_april  = temperature_price_room_influence(simulation_temp_april)
 
 
-    ertrag_november = (betten_belegt_winter*(preis_winter - preis_delta_november)) * 30
+    umsatz_november = (betten_belegt_winter*(preis_winter - preis_delta_november)) * 30
     preis_november_array.append(preis_winter - preis_delta_november)
-    ertrag_november_array.append(ertrag_november)
-    ertrag_dezember = (betten_belegt_winter*(preis_winter - preis_delta_dezember)) * 31
-    ertrag_dezember_array.append(ertrag_dezember)
-    ertrag_januar = (betten_belegt_winter*(preis_winter - preis_delta_januar)) * 31
-    ertrag_januar_array.append(ertrag_januar)
-    ertrag_februar = (betten_belegt_winter*(preis_winter - preis_delta_februar)) * 28
-    ertrag_februar_array.append(ertrag_februar)
-    ertrag_maerz = (betten_belegt_winter*(preis_winter - preis_delta_maerz)) * 31
-    ertrag_maerz_array.append(ertrag_maerz)
-    ertrag_april = (betten_belegt_winter*(preis_winter - preis_delta_april)) * 30
-    ertrag_april_array.append(ertrag_april)
+    umsatz_november_array.append(umsatz_november)
+    umsatz_dezember = (betten_belegt_winter*(preis_winter - preis_delta_dezember)) * 31
+    umsatz_dezember_array.append(umsatz_dezember)
+    umsatz_januar = (betten_belegt_winter*(preis_winter - preis_delta_januar)) * 31
+    umsatz_januar_array.append(umsatz_januar)
+    umsatz_februar = (betten_belegt_winter*(preis_winter - preis_delta_februar)) * 28
+    umsatz_februar_array.append(umsatz_februar)
+    umsatz_maerz = (betten_belegt_winter*(preis_winter - preis_delta_maerz)) * 31
+    umsatz_maerz_array.append(umsatz_maerz)
+    umsatz_april = (betten_belegt_winter*(preis_winter - preis_delta_april)) * 30
+    umsatz_april_array.append(umsatz_april)
 
 
     # 30 Tage pro Monat für 6 Monate jeweils Sommer und Winter
-    ertrag_winter = ertrag_november + ertrag_dezember + ertrag_januar + ertrag_februar + ertrag_maerz + ertrag_april
-    ertrag_winter_array.append(ertrag_winter)
-    ertrag_sommer = (betten_belegt_sommer * preis_sommer) * 30 * 6
-    ertrag_sommer_array.append(ertrag_sommer)
+    umsatz_winter = umsatz_november + umsatz_dezember + umsatz_januar + umsatz_februar + umsatz_maerz + umsatz_april
+    umsatz_winter_array.append(umsatz_winter)
+    umsatz_sommer = (betten_belegt_sommer * preis_sommer) * 30 * 6
+    umsatz_sommer_array.append(umsatz_sommer)
 
-    budget_personal_winter = int(ertrag_winter * 0.3)
+    budget_personal_winter = int(umsatz_winter * 0.3)
     budget_personal_winter_array.append(budget_personal_winter)
-    budget_personal_sommer = int(ertrag_sommer * 0.3)
+    budget_personal_sommer = int(umsatz_sommer * 0.3)
     budget_personal_sommer_array.append(budget_personal_sommer)
 
     # Anzahl Fachkräfte berechnen
@@ -304,15 +304,15 @@ for i in range(monte_carlo):
 '''-----------------------------------------Ermitteln der Ausgabewerte-------------------------------------------------------'''
 
 # Ausgabe der angepassten Preise
-print("Einnahmen November: ", (np.sum(ertrag_november_array)/monte_carlo), "€")
-print("Einnahmen Dezember: ", (np.sum(ertrag_dezember_array)/monte_carlo), "€")
-print("Einnahmen Januar: ", (np.sum(ertrag_januar_array)/monte_carlo), "€")
-print("Einnahmen Februar: ", (np.sum(ertrag_februar_array)/monte_carlo), "€")
-print("Einnahmen März: ", (np.sum(ertrag_maerz_array)/monte_carlo), "€")
-print("Einnahmen April: ", (np.sum(ertrag_april_array)/monte_carlo), "€")
+print("Umsatz November: ", (np.sum(umsatz_november_array)/monte_carlo), "€")
+print("Umsatz Dezember: ", (np.sum(umsatz_dezember_array)/monte_carlo), "€")
+print("Umsatz Januar: ", (np.sum(umsatz_januar_array)/monte_carlo), "€")
+print("Umsatz Februar: ", (np.sum(umsatz_februar_array)/monte_carlo), "€")
+print("Umsatz März: ", (np.sum(umsatz_maerz_array)/monte_carlo), "€")
+print("Umsatz April: ", (np.sum(umsatz_april_array)/monte_carlo), "€")
 
-print("Einnahmen Winter gesamt: ", (np.sum(ertrag_winter_array)/monte_carlo), "€")
-print("Einnahmen Sommer gesamt: ", (np.sum(ertrag_sommer_array)/monte_carlo), "€")
+print("Umsatz Winter gesamt: ", (np.sum(umsatz_winter_array)/monte_carlo), "€")
+print("Umsatz Sommer gesamt: ", (np.sum(umsatz_sommer_array)/monte_carlo), "€")
 
 print("Die empfohlene Anzahl Fachkräfte für den Winter: ", (round(np.sum(anzahl_fachkraft_winter_array)/monte_carlo,0)))
 print("Die empfohlene Anzahl Fachkräfte für den Sommer: ", (round(np.sum(anzahl_fachkraft_sommer_array)/monte_carlo,0)))
