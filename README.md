@@ -88,10 +88,9 @@ Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Wer
             | Anzahl Fachkräfte für Sommer   |              19|
 
 
-
+    Grafik des Output:
 
 ![alt text](image.png)
-![screenshot](screenshot.png)
 
 ## Ausführung:
 Im Terminal den folgenden Code ausführen:
