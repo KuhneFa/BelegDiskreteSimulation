@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 '''----------------------------------------------------------Setzen der wichtigsten Parameter -------------------------------------------------------------------'''
 '''@preis_winter Preis den der Wirt für eine Übernachtung im Winter ansetzt
@@ -128,7 +129,9 @@ dezember_temp_avg = -4.8
 dezember_temp_min = -9.2
 dezember_temp_max = 0.4
 
+
 '''-----------------------------------------Vorbereitung der Simulation von Auslastung, Wetter und Nachfrage----------------------------------'''
+
 
 # Durchschnitt und Standardabweichung berechnen, damit daraus eine Normalverteilung für die Auslastungsrate simuliert werden kann
 avg_auslastung_winter = np.mean(auslastungsrate_winter)
@@ -162,6 +165,8 @@ std_dezember = (abs(dezember_temp_avg - dezember_temp_min) + abs(dezember_temp_m
 
 
 '''-----------------------------------------Simulation von Auslastung, Wetter und Nachfrage---------------------------------------------------'''
+
+
 # Anlegen von Arrays, um die Werte für die einzelnen Durchläufe der Simulation zu speichern
 betten_belegt_winter_array = []
 betten_belegt_sommer_array = []
@@ -219,6 +224,7 @@ for i in range(monte_carlo):
 
     '''-----------------------------------------Preisanpassungen basierend auf Gesamtnachfrage -------------------------------------------------------'''
 
+
     # Preisanpassung für den Preis pro Zimmer in einer Nacht basierend auf der Simulation der gesamten Übernachtungen in Tirol
     # Winter
     preis_winter_delta = 0
@@ -260,6 +266,7 @@ for i in range(monte_carlo):
 
     '''-----------------------------------------Preisanpassung basierend auf der Temperatur-------------------------------------------------------'''
 
+
     # Preisänderungen aufgrund von Tauwetter im Winter
     preis_delta_november  = temperature_price_room_influence(simulation_temp_november)
     preis_delta_dezember  = temperature_price_room_influence(simulation_temp_dezember)
@@ -272,16 +279,27 @@ for i in range(monte_carlo):
     umsatz_november = (betten_belegt_winter*(preis_winter - preis_delta_november)) * 30
     preis_november_array.append(preis_winter - preis_delta_november)
     umsatz_november_array.append(umsatz_november)
+    umsatz_november_int = round(np.sum(umsatz_november_array)/monte_carlo,2)
+
     umsatz_dezember = (betten_belegt_winter*(preis_winter - preis_delta_dezember)) * 31
     umsatz_dezember_array.append(umsatz_dezember)
+    umsatz_dezember_int = round(np.sum(umsatz_dezember_array)/monte_carlo,2)
+
     umsatz_januar = (betten_belegt_winter*(preis_winter - preis_delta_januar)) * 31
     umsatz_januar_array.append(umsatz_januar)
+    umsatz_januar_int = round(np.sum(umsatz_januar_array)/monte_carlo,2)
+
     umsatz_februar = (betten_belegt_winter*(preis_winter - preis_delta_februar)) * 28
     umsatz_februar_array.append(umsatz_februar)
+    umsatz_februar_int = round(np.sum(umsatz_februar_array)/monte_carlo,2)
+
     umsatz_maerz = (betten_belegt_winter*(preis_winter - preis_delta_maerz)) * 31
     umsatz_maerz_array.append(umsatz_maerz)
+    umsatz_maerz_int = round(np.sum(umsatz_maerz_array)/monte_carlo,2)
+
     umsatz_april = (betten_belegt_winter*(preis_winter - preis_delta_april)) * 30
     umsatz_april_array.append(umsatz_april)
+    umsatz_april_int = round(np.sum(umsatz_april_array)/monte_carlo,2)
 
 
     # 30 Tage pro Monat für 6 Monate jeweils Sommer und Winter
@@ -290,9 +308,21 @@ for i in range(monte_carlo):
     umsatz_sommer = (betten_belegt_sommer * preis_sommer) * 30 * 6
     umsatz_sommer_array.append(umsatz_sommer)
 
-    budget_personal_winter = int(umsatz_winter * 0.3)
+    # Gewinn pro Monat/ Saison berechnen
+    gewinn_november = (np.sum(umsatz_november_array)/monte_carlo) * 0.04
+    gewinn_dezember = (np.sum(umsatz_dezember_array)/monte_carlo) * 0.04
+    gewinn_januar = (np.sum(umsatz_januar_array)/monte_carlo) * 0.04
+    gewinn_februar = (np.sum(umsatz_februar_array)/monte_carlo) * 0.04
+    gewinn_maerz = (np.sum(umsatz_maerz_array)/monte_carlo) * 0.04
+    gewinn_april = (np.sum(umsatz_april_array)/monte_carlo) * 0.04
+
+    gewinn_winter = gewinn_november + gewinn_dezember + gewinn_januar + gewinn_februar + gewinn_maerz + gewinn_april
+    gewinn_sommer = (np.sum(umsatz_sommer_array)/monte_carlo) * 0.04
+
+    # Budget Fachkräfte berechnen
+    budget_personal_winter = int(umsatz_winter * 0.35)
     budget_personal_winter_array.append(budget_personal_winter)
-    budget_personal_sommer = int(umsatz_sommer * 0.3)
+    budget_personal_sommer = int(umsatz_sommer * 0.35)
     budget_personal_sommer_array.append(budget_personal_sommer)
 
     # Anzahl Fachkräfte berechnen
@@ -301,18 +331,96 @@ for i in range(monte_carlo):
     anzahl_fachkraft_sommer = int(round(((budget_personal_sommer / 6)/preis_fachkraft),0))
     anzahl_fachkraft_sommer_array.append(anzahl_fachkraft_sommer)
 
+    fachkraefte_winter = round(np.sum(anzahl_fachkraft_winter_array)/monte_carlo,0)
+    fachkraefte_winter = int(fachkraefte_winter)
+    fachkraefte_sommer = round(np.sum(anzahl_fachkraft_sommer_array)/monte_carlo,0)
+    fachkraefte_sommer = int(fachkraefte_sommer)
+
+
 '''-----------------------------------------Ermitteln der Ausgabewerte-------------------------------------------------------'''
 
+
 # Ausgabe der angepassten Preise
-print("Umsatz November: ", (np.sum(umsatz_november_array)/monte_carlo), "€")
-print("Umsatz Dezember: ", (np.sum(umsatz_dezember_array)/monte_carlo), "€")
-print("Umsatz Januar: ", (np.sum(umsatz_januar_array)/monte_carlo), "€")
-print("Umsatz Februar: ", (np.sum(umsatz_februar_array)/monte_carlo), "€")
-print("Umsatz März: ", (np.sum(umsatz_maerz_array)/monte_carlo), "€")
-print("Umsatz April: ", (np.sum(umsatz_april_array)/monte_carlo), "€")
+print()
+print("Umsatz November: ", umsatz_november_int, "€")
+print("Gewinn November: ", round(gewinn_november,2), "€")
+print()
+print("Umsatz Dezember: ", umsatz_dezember_int, "€")
+print("Gewinn Dezember: ", round(gewinn_dezember,2), "€")
+print()
+print("Umsatz Januar: ", umsatz_januar_int, "€")
+print("Gewinn Januar: ", round(gewinn_januar,2), "€")
+print()
+print("Umsatz Februar: ", umsatz_februar_int, "€")
+print("Gewinn Februar: ", round(gewinn_februar,2), "€")
+print()
+print("Umsatz März: ", umsatz_maerz_int, "€")
+print("Gewinn März: ", round(gewinn_maerz,2), "€")
+print()
+print("Umsatz April: ", umsatz_april_int, "€")
+print("Gewinn April: ", round(gewinn_april,2), "€")
+print()
 
-print("Umsatz Winter gesamt: ", (np.sum(umsatz_winter_array)/monte_carlo), "€")
-print("Umsatz Sommer gesamt: ", (np.sum(umsatz_sommer_array)/monte_carlo), "€")
+print("Umsatz Winter gesamt: ", round(np.sum(umsatz_winter_array)/monte_carlo, 2), "€")
+print("Gewinn Winter gesamt: ", round(gewinn_winter,2), "€")
+print()
+print("Umsatz Sommer gesamt: ", round(np.sum(umsatz_sommer_array)/monte_carlo,2), "€")
+print("Gewinn Sommer gesamt: ", round(gewinn_sommer,2), "€")
+print()
 
-print("Die empfohlene Anzahl Fachkräfte für den Winter: ", (round(np.sum(anzahl_fachkraft_winter_array)/monte_carlo,0)))
-print("Die empfohlene Anzahl Fachkräfte für den Sommer: ", (round(np.sum(anzahl_fachkraft_sommer_array)/monte_carlo,0)))
+print("Die empfohlene Anzahl Fachkräfte für den Winter: ", fachkraefte_winter)
+print("Die empfohlene Anzahl Fachkräfte für den Sommer: ", fachkraefte_sommer)
+
+
+'''-----------------------------------------Grafische Darstellung der Ausgabewerte-----------------------------------------'''
+
+
+# Daten für die Monate
+monate = ['November', 'Dezember', 'Januar', 'Februar', 'März', 'April']
+x = np.arange(len(monate))
+
+# Daten für Umsatz und Gewinn
+umsatz = [umsatz_november_int,umsatz_dezember_int,umsatz_januar_int,umsatz_februar_int,umsatz_maerz_int,umsatz_april_int]
+gewinn = [gewinn_november,gewinn_dezember,gewinn_januar,gewinn_februar,gewinn_maerz,gewinn_april]
+
+# Breite der Balken
+bar_width = 0.45
+
+# Erstellen Sie eine Figur und zwei Subplots nebeneinander
+fig, ax = plt.subplots(1, 2, figsize=(12, 6))
+fig.suptitle('Umsatz und Gewinn des Hotel Goldener Adler in Tirol in den Wintermonaten - Personalbedarf für Sommersaison und Wintersaison')
+
+# Erstellen Sie einen Plot für Umsatz und Gewinn im ersten Subplot
+ax[0].bar(x - bar_width/2, umsatz, bar_width, label='Umsatz')
+ax[0].bar(x + bar_width/2, gewinn, bar_width, label='Gewinn')
+
+# Fügen Sie Titel und Beschriftungen hinzu
+ax[0].set_title('Umsatz und Gewinn pro Monat')
+ax[0].set_xlabel('Monat')
+ax[0].set_ylabel('Betrag in €')
+
+# Fügen Sie eine Legende hinzu
+ax[0].legend()
+
+# Definieren Sie die Position der x-Achsen-Beschriftungen und setzen Sie sie auf die Monatsnamen
+ax[0].set_xticks(x)
+ax[0].set_xticklabels(monate)
+
+# Daten für die Jahreszeiten
+jahreszeiten = ['Winter', 'Sommer']
+
+# Daten für die Anzahl der Fachkräfte
+fachkraefte = [fachkraefte_winter, fachkraefte_sommer]
+
+# Erstellen Sie einen Plot für die Anzahl der Fachkräfte im zweiten Subplot
+ax[1].bar(jahreszeiten, fachkraefte, color=['blue', 'orange'])
+
+ax[1].set_title('Empfohlene Anzahl Fachkräfte')
+ax[1].set_xlabel('Jahreszeit')
+ax[1].set_ylabel('Anzahl der Fachkräfte')
+
+# Zeigen Sie den Plot an
+plt.tight_layout()
+
+# Zeigen Sie den Plot an
+plt.show()

@@ -2,7 +2,7 @@
 Dieses Projekt bildet den Beleg für den Kurs "Diskrete Simulation" im Sommersemester 2024 ab
 
 ## Aufgabenstellung:
-Das Hotel Goldener Adler in Kirchberg, Tirol möchte kalkulieren wie viele Mitarbeiter es sich leisten kann einzustellen jeweils für Sommer- und Wintersaison. Das Hotel hat 500 Zimmer, die schwankend nach Saison, Wetter und Gesamtnachfrage der Übernachtungen ausgelastet sind. Der Preis für eine Übernachtung wird vom Wirt selbst festgelegt und liegt, basierend auf Erfahrungswerten, zwischen 80-150€. 
+Das Hotel Goldener Adler in Kirchberg, Tirol möchte kalkulieren wie viele Mitarbeiter es sich leisten kann einzustellen jeweils für Sommer- und Wintersaison. Das Hotel hat 200 Zimmer, die schwankend nach Saison, Wetter und Gesamtnachfrage der Übernachtungen ausgelastet sind. Der Preis für eine Übernachtung wird vom Wirt selbst festgelegt und liegt, basierend auf Erfahrungswerten, zwischen 80-150€. 
 
 Der Preis unterliegt jedoch kurzfristigen Schwankungen. Um Wettbewerbsfähig zu sein muss der Wirt den Preis senken, wenn die Gesamtnachfrage für Übernachtungen in Tirol sinkt oder das Wetter im Winter nicht mehr zum Skifahren geeignet ist. Andererseits kann er die Preise erhöhen, wenn die Gesamtnachfrage nach Übernachtungen in Tirol stark ansteigt.
 
@@ -11,7 +11,10 @@ Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simu
         - Die Auslastung seines Hotels
         - Die Temperatur im Winter, um einschätzen zu können, ob Skifahren möglich ist
 
-Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Saison, wenn die Personalkosten maximal 30% der Einnahmen betragen dürfen.
+Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Saison, wenn die Personalkosten maximal 35% des Umsatzes betragen dürfen.
+
+Der Anteil für die Personalkosten sind der Tourismusberatung Prodinger (5) entnommen.
+Demnach wird der Gewinn eines Hotels auf 4% des Umsatzes beziffert.
 
 ## Überlegungen:
 Um die Gesamtnachfrage nach Übernachtungen in Tirol einschätzen zu können, habe ich auf historische Daten zurückgegriffen (1). Dabei habe ich die Nächtigungen von 2000-2023 betrachtet und basierend auf diesen Werten eine normalverteilte Simulation durchgeführt. Die Jahre 2020,2021 habe ich aufgrund des Sondereinflusses von Covid weggelassen, wobei man durchaus argumentieren kann diese Werte ebenfalls mit zu berücksichtigen.
@@ -28,7 +31,7 @@ Der Code unterteilt sich in vier Bereiche:
 **1.** Das setzen der wichtigsten Parameter erfolgt durch den User. Folgende Parameter können gesetzt werden:
     - Preis für eine Übernachtung im Winter: 150€
     - Preis für eine Übernachtung im Sommer: 80€
-    - Anzahl der Zimmer, die zu vermieten sind: 500
+    - Anzahl der Zimmer, die zu vermieten sind: 200
     - Anzahl der Durchläufe für die Montecarlo-Simulation: 1000
 
 **2.** Die Datenhaltung. Hier sind alle historischen Daten zu den Simulationsobjekten abgelegt
@@ -40,7 +43,7 @@ Der Code unterteilt sich in vier Bereiche:
     - Simulation der Gesamtnachfrage nach Übernachtungen in Tirol: Der Preis steigt, wenn die Nachfrage über dem Durchschnitt für die Saison liegt. Der Preis sinkt, wenn die Nachfrage unter dem Durchschnitt für die Saison liegt.
     - Simulation der Temperatur für die einzelnen Monate in Kirchberg: Hier werden die Temperaturen der Monate für die Wintersaison ausgewertet. Wenn es an einem Tag im Winter 0 Grad oder wärmer ist, muss künstlich beschneit werden. Die Erfahrung des Skifahrens leidet und der Preis sinkt leicht. Wenn es wärmer als 3 Grad ist, kann kaum noch künstlich beschneit werden. Es kann kaum noch Skigefahren werden. Die Preise sinken noch weiter
 
-**5.** Aus den Preisen werden die Einnahmen für die Monate der Wintersaison berechnet und für die Sommersaison. Abgeleitet aus dem Ertrag werden dann die in der Aufgabenstellung geforderten 30% für Personalkosten berechnet. Dieses Budget wird anschließen durch die Kosten für eine Fachkraft pro Saison geteilt. Dadurch kann genau bestimmt werden wie viele Fachkräfte der Wirt für eine Saison einstellen kann.
+**5.** Aus den Preisen werden die Einnahmen für die Monate der Wintersaison berechnet und für die Sommersaison. Abgeleitet aus dem Ertrag werden dann die in der Aufgabenstellung geforderten 35% für Personalkosten berechnet. Dieses Budget wird anschließen durch die Kosten für eine Fachkraft pro Saison geteilt. Dadurch kann genau bestimmt werden wie viele Fachkräfte der Wirt für eine Saison einstellen kann.
 
 ## Resume:
 Das Program ist so konzipiert, dass es dem Nutzer erlaubt die Basisparameter selbst zu wählen.
@@ -56,14 +59,30 @@ Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Wer
             | Parameter                      | Wert           | 
             |:-------------------------------|:-------------: |
             | Umsatz November                | 862,840.95 €   |
+            | Gewinn November                | 862,840.95 €   |
+            |                                |                |
             | Umsatz Dezember                | 952,940.155 €  |
+            | Gewinn Dezember                | 862,840.95 €   |
+            |                                |                |
             | Umsatz Januar                  | 959,154.26 €   |
+            | Gewinn Januar                  | 862,840.95 €   |
+            |                                |                |
             | Umsatz Februar                 | 859,217.24 €   |
+            | Gewinn Februar                 | 862,840.95 €   |
+            |                                |                |
             | Umsatz März                    | 896,206.745 €  |
+            | Gewinn März                    | 862,840.95 €   |
+            |                                |                |
             | Umsatz April                   | 818,607.6 €    |
+            | Gewinn April                   | 862,840.95 €   |
+            |                                |                |
             |:-------------------------------|:--------------:|
             | Umsatz Wintersaison gesamt     | 534,896,6.95 € |
+            | Gewinn Wintersaison gesamt     | 862,840.95 €   |
+            |                                |                |
             | Umsatz Sommersaison gesamt     |  314,477,2.8 € |
+            | Sommersaison gesamt            | 862,840.95 €   |
+            |                                |                |
             |:-------------------------------|:--------------:|
             | Anzahl Fachkräfte für Winter   |              68|
             | Anzahl Fachkräfte für Sommer   |              40|
@@ -91,4 +110,5 @@ Aufgerufen am: 27.04.2024
 4: https://www.wko.at/oe/kollektivvertrag/loehne-gastronomie-hotellerie-tirol-2023.pdf
 Aufgerufen am: 27.04.2024
 
-
+5: https://tourismusberatung.prodinger.at/2016/06/16/kosten-hotel/
+Aufgerufen am: 07.06.2024
