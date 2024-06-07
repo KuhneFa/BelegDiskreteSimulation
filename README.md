@@ -4,49 +4,67 @@ Dieses Projekt bildet den Beleg für den Kurs "Diskrete Simulation" im Sommersem
 ## Aufgabenstellung:
 Das Hotel Goldener Adler in Kirchberg, Tirol möchte kalkulieren wie viele Mitarbeiter es sich leisten kann einzustellen jeweils für Sommer- und Wintersaison. Das Hotel hat 200 Zimmer, die schwankend nach Saison, Wetter und Gesamtnachfrage der Übernachtungen ausgelastet sind. Der Preis für eine Übernachtung wird vom Wirt selbst festgelegt und liegt, basierend auf Erfahrungswerten, zwischen 80-150€. 
 
-Der Preis unterliegt jedoch kurzfristigen Schwankungen. Um Wettbewerbsfähig zu sein muss der Wirt den Preis senken, wenn die Gesamtnachfrage für Übernachtungen in Tirol sinkt oder das Wetter im Winter nicht mehr zum Skifahren geeignet ist. Andererseits kann er die Preise erhöhen, wenn die Gesamtnachfrage nach Übernachtungen in Tirol stark ansteigt.
+Der Preis unterliegt jedoch kurzfristigen Schwankungen. Um Wettbewerbsfähig zu sein muss der Wirt den Preis senken, wenn die Gesamtnachfrage für Übernachtungen in Tirol sinkt oder das Wetter im Winter nicht mehr zum Skifahren geeignet ist. Andererseits kann er die Preise erhöhen, wenn die Gesamtnachfrage nach Übernachtungen in Tirol stark ansteigt. Diese kurzfristigen Änderungen können im Winter monatsweise auftreten.
 
-Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simulieren: 
+Dadurch muss der Wirt mehrere Kenngrößen basierend auf historischen Daten simulieren:
+
         - Die Gesamtnachfrage
-        - Die Auslastung seines Hotels
-        - Die Temperatur im Winter, um einschätzen zu können, ob Skifahren möglich ist
 
+<<<<<<< HEAD
 Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Saison, wenn die Personalkosten maximal 35% des Umsatzes betragen dürfen.
 
 Der Anteil für die Personalkosten sind der Tourismusberatung Prodinger (5) entnommen.
 Demnach wird der Gewinn eines Hotels auf 4% des Umsatzes beziffert.
+=======
+        - Die Auslastung der Zimmer seines Hotels
+        
+        - Die Temperatur im Winter, um einschätzen zu können ob Skifahren möglich ist
+
+Das Personal wird nach der Nomenklatur Tirol bezahlt. Erfahrungsgemäß kostet ein Mitarbeiter dem Wirt das doppelte von seinem Bruttolohn. Ermitteln Sie wie viele Hotelfachkräfte eingestellt werden sollten für die nächste Sommer- und Wintersaison, wenn die Personalkosten maximal 30% der Einnahmen betragen dürfen.
+>>>>>>> 27baa5ec6e2c0617eeaf26dba86afa56f7f82403
 
 ## Überlegungen:
 Um die Gesamtnachfrage nach Übernachtungen in Tirol einschätzen zu können, habe ich auf historische Daten zurückgegriffen (1). Dabei habe ich die Nächtigungen von 2000-2023 betrachtet und basierend auf diesen Werten eine normalverteilte Simulation durchgeführt. Die Jahre 2020,2021 habe ich aufgrund des Sondereinflusses von Covid weggelassen, wobei man durchaus argumentieren kann diese Werte ebenfalls mit zu berücksichtigen.
 
 Die Auslastung des Hotels habe ich basierend auf historischen Daten für die Hotelauslastung in Österreich simuliert (2). Dabei habe ich die Jahre 2012-2019 als Datengrundlage genommen.
 
-Für die Temperatur habe ich ebenfalls auf historische Durchschnittswerte für Kirchberg, Tirol zurückgegriffen (3). Im Gegensatz zu den anderen Werten teilen sich diese auf Monate auf und nicht auf die Saison. Daher habe ich für die Wintersaison die Monate von November bis April gesondert betrachtet. Sicherlich hätte man hier um dem Klimawandel gerecht zu werden eine gewisse dynamik in die Werte einbauen können.
+Für die Temperatur habe ich ebenfalls auf historische Durchschnittswerte für Kirchberg, Tirol zurückgegriffen (3). Im Gegensatz zu den anderen Werten teilen sich diese auf Monate auf und nicht auf die Saison. Daher habe ich für die Wintersaison die Monate von November bis April gesondert betrachtet. Sicherlich hätte man hier um dem Klimawandel gerecht zu werden eine gewisse Dynamik in die Werte einbauen können.
 
-Für alle Simulationsobjekte habe ich mich für normalverteilte Werte entschieden, da diese für mich realistischer erscheinen bei den genannten Beispielen als etwa gleichverteilte Werte.
+Für alle Simulationsobjekte habe ich mich für normalverteilte Werte entschieden, da diese für mich realistischer erscheinen bei den genannten Beispielen als etwa gleichverteilte Zufallsverteilungen.
 
 Kosten für das Personal sind Lohngruppe 3 mit 4-6 Jahren Berufserfahrung der Nomenklatur Tirol (4).
 
 Der Code unterteilt sich in vier Bereiche:
 **1.** Das setzen der wichtigsten Parameter erfolgt durch den User. Folgende Parameter können gesetzt werden:
+
     - Preis für eine Übernachtung im Winter: 150€
+
     - Preis für eine Übernachtung im Sommer: 80€
+<<<<<<< HEAD
     - Anzahl der Zimmer, die zu vermieten sind: 200
+=======
+    
+    - Anzahl der Zimmer, die zu vermieten sind: 500
+    
+>>>>>>> 27baa5ec6e2c0617eeaf26dba86afa56f7f82403
     - Anzahl der Durchläufe für die Montecarlo-Simulation: 1000
+
+*Die Zahlenwerte sind hier als Beispielwerte für die spätere Tabelle zu verstehen.*
 
 **2.** Die Datenhaltung. Hier sind alle historischen Daten zu den Simulationsobjekten abgelegt
 
 **3.** Die Vorbereitung der Simulation. Hier werden Standardabweichung und Mittelwert ermittelt, um anschließend mit numpy die Simulationen durchführen zu können.
 
 **4.** Die Simulation. Hier wurden die Werte in eine for-Schleife eingesetzt. Dadurch kann die Anzahl der Versuche für die Montecarlo Simulationen durchlaufen werden. Folgende Schritte folgen:
+
     - Simulation der Auslastungsrate. Daraus wird die Anzahl der belegten Zimmer berechnet
-    - Simulation der Gesamtnachfrage nach Übernachtungen in Tirol: Der Preis steigt, wenn die Nachfrage über dem Durchschnitt für die Saison liegt. Der Preis sinkt, wenn die Nachfrage unter dem Durchschnitt für die Saison liegt.
-    - Simulation der Temperatur für die einzelnen Monate in Kirchberg: Hier werden die Temperaturen der Monate für die Wintersaison ausgewertet. Wenn es an einem Tag im Winter 0 Grad oder wärmer ist, muss künstlich beschneit werden. Die Erfahrung des Skifahrens leidet und der Preis sinkt leicht. Wenn es wärmer als 3 Grad ist, kann kaum noch künstlich beschneit werden. Es kann kaum noch Skigefahren werden. Die Preise sinken noch weiter
+    - Simulation der Gesamtnachfrage nach Übernachtungen in Tirol: Der Preis steigt schrittweise, wenn die Nachfrage über dem Durchschnitt für die Saison liegt. Der Preis sinkt schrittweise, wenn die Nachfrage unter dem Durchschnitt für die Saison liegt.
+    - Simulation der Temperatur für die einzelnen Monate in Kirchberg: Hier werden die Temperaturen der Monate für die Wintersaison ausgewertet. Wenn es an einem Tag im Winter 0 Grad oder wärmer ist, muss künstlich beschneit werden. Die Erfahrung des Skifahrens leidet und der Preis sinkt leicht. Wenn es wärmer als 3 Grad ist, kann kaum noch künstlich beschneit werden. Es kann kaum noch Skigefahren werden. Die Preise sinken noch weiter.
 
 **5.** Aus den Preisen werden die Einnahmen für die Monate der Wintersaison berechnet und für die Sommersaison. Abgeleitet aus dem Ertrag werden dann die in der Aufgabenstellung geforderten 35% für Personalkosten berechnet. Dieses Budget wird anschließen durch die Kosten für eine Fachkraft pro Saison geteilt. Dadurch kann genau bestimmt werden wie viele Fachkräfte der Wirt für eine Saison einstellen kann.
 
 ## Resume:
-Das Program ist so konzipiert, dass es dem Nutzer erlaubt die Basisparameter selbst zu wählen.
+Das Program ist so konzipiert, dass es dem Nutzer erlaubt die Basisparameter via Terminal selbst einzugeben.
 Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Werte geliefert:
 
     Input:
@@ -58,6 +76,7 @@ Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Wer
     Output:
             | Parameter                      | Wert           | 
             |:-------------------------------|:-------------: |
+<<<<<<< HEAD
             | Umsatz November                | 862,840.95 €   |
             | Gewinn November                | 862,840.95 €   |
             |                                |                |
@@ -83,6 +102,17 @@ Mit denen in der Aufgabenstellung gegebenen Parametern hat das Tool folgende Wer
             | Umsatz Sommersaison gesamt     |  314,477,2.8 € |
             | Sommersaison gesamt            | 862,840.95 €   |
             |                                |                |
+=======
+            | Einnahmen November             | 862,840.95 €   |
+            | Einnahmen Dezember             | 952,940.15 €   |
+            | Einnahmen Januar               | 959,154.26 €   |
+            | Einnahmen Februar              | 859,217.24 €   |
+            | Einnahmen März                 | 896,206.74 €   |
+            | Einnahmen April                | 818,607.60 €   |
+            |:-------------------------------|:--------------:|
+            | Einnahmen Wintersaison gesamt  | 5,348,966.95 € |
+            | Einnahmen Sommersaison gesamt  | 3,144,772.80 € |
+>>>>>>> 27baa5ec6e2c0617eeaf26dba86afa56f7f82403
             |:-------------------------------|:--------------:|
             | Anzahl Fachkräfte für Winter   |              68|
             | Anzahl Fachkräfte für Sommer   |              40|
@@ -95,6 +125,7 @@ Im Terminal den folgenden Code ausführen:
 
     python Kirchberg.py 
 
+Anschließend beginnt die Aufforderung zur Eingabe konkreter Werte.
 ## Quellen:
 
 
