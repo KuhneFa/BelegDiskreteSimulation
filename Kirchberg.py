@@ -383,26 +383,24 @@ x = np.arange(len(monate))
 umsatz = [umsatz_november_int,umsatz_dezember_int,umsatz_januar_int,umsatz_februar_int,umsatz_maerz_int,umsatz_april_int]
 gewinn = [gewinn_november,gewinn_dezember,gewinn_januar,gewinn_februar,gewinn_maerz,gewinn_april]
 
-# Breite der Balken
+# Breite der Balken definieren
 bar_width = 0.45
 
-# Erstellen Sie eine Figur und zwei Subplots nebeneinander
+# Figur erstellen für zwei Subplots nebeneinander
 fig, ax = plt.subplots(1, 2, figsize=(12, 6))
 fig.suptitle('Umsatz und Gewinn des Hotel Goldener Adler in Tirol in den Wintermonaten - Personalbedarf für Sommersaison und Wintersaison')
 
-# Erstellen Sie einen Plot für Umsatz und Gewinn im ersten Subplot
+# Erster Subplot für Umsatz und Gewinn
 ax[0].bar(x - bar_width/2, umsatz, bar_width, label='Umsatz')
 ax[0].bar(x + bar_width/2, gewinn, bar_width, label='Gewinn')
 
-# Fügen Sie Titel und Beschriftungen hinzu
+# Titel und Beschriftungen
 ax[0].set_title('Umsatz und Gewinn pro Monat')
 ax[0].set_xlabel('Monat')
 ax[0].set_ylabel('Betrag in €')
-
-# Fügen Sie eine Legende hinzu
 ax[0].legend()
 
-# Definieren Sie die Position der x-Achsen-Beschriftungen und setzen Sie sie auf die Monatsnamen
+# Beschriftung und Position der x-Achse
 ax[0].set_xticks(x)
 ax[0].set_xticklabels(monate)
 
@@ -412,15 +410,13 @@ jahreszeiten = ['Winter', 'Sommer']
 # Daten für die Anzahl der Fachkräfte
 fachkraefte = [fachkraefte_winter, fachkraefte_sommer]
 
-# Erstellen Sie einen Plot für die Anzahl der Fachkräfte im zweiten Subplot
+# Zweiter Subplot für Anzahl der Fachkräfte
 ax[1].bar(jahreszeiten, fachkraefte, color=['blue', 'orange'])
 
 ax[1].set_title('Empfohlene Anzahl Fachkräfte')
 ax[1].set_xlabel('Jahreszeit')
 ax[1].set_ylabel('Anzahl der Fachkräfte')
 
-# Zeigen Sie den Plot an
+# Plot zeigen
 plt.tight_layout()
-
-# Zeigen Sie den Plot an
 plt.show()
